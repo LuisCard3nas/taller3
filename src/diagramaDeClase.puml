@@ -1,0 +1,84 @@
+@startuml
+skin rose
+
+package beattherhytm{
+
+package Servicios {
+interface sistema{
++menuprincipal():void
++agregarInstrumento():void
++venderInstrumento():void
++consultarInventario():void
++cierre():void
+}
+}
+package models{
+abstract Instrumento{
+- codigoUnico: String
+- nombreInstumento: String
+- materialDeConstruccion: String
+- precio: double
+- stockProducto: int
++Instrumento(codigoUnico: String , nombreInstumento: String,materialDeConstruccion: String, precio: double , stockProducto: int);
++get codigoUnico(): String
++get nombreInstumento(): String
++get precio(): double
++get stockProducto(): int
+}
+class instrumentoCuerda{
+- tipoDeCuerda: String
+- numeroDeCuerdas: int
+- tipo: String
+
++instrumentoCuerda(tipoDeCuerda: String, numeroDeCuerdas: int,tipo:String, materialDeConstruccion:String)
++get tipoDeCuerda(): String
++get numeroDeCuerdas(): int
++get tipo(): String
+}
+class intrumentoPercusion{
+- tipoDePercusion : String
+- altura : String
++intrumentoPercusion(tipoDePercusion: String, altura : String, materialDeConstruccion: String)
++get tipoDePercusion(): String
++get altura(): String
+}
+class instrumentoDeViento{
++instrumentoDeViento(materialDeConstruccion: String )
+}
+class sistemaIMPL{
++ listaIMPL:listaInstrumentos
+}
+class listaInstrumentosCuerda{
+- cantidadMax int
+- cantidadActual int
+- Instrumento:listaInstrumentos[]
++ Listaintrumentos(cantidadMax int)
+}
+
+class listaInstrumentosViento{
+- cantidadMax int
+- cantidadActual int
+- Instrumento:listaInstrumentos[]
++ Listaintrumentos(cantidadMax int)
+
+}
+class listaInstrumentosPercusion {
+- cantidadMax int
+- cantidadActual int
+- Instrumento:listaInstrumentos[]
++ Listaintrumentos(cantidadMax int)
+
+}
+Instrumento <|-- instrumentoDeViento:hereda
+Instrumento <|-- intrumentoPercusion :hereda
+Instrumento <|-- instrumentoCuerda: hereda
+InstrumentoCuerda "*" --o "1" listaInstrumentosCuerda: almacena
+InstrumentoViento "*" --o "1" listaInstrumentosViento: almacena
+InstrumentoPercusion "*" --o "1" listaInstrumentosPercusion: almacena
+sistemaIMPL "1" --> "1 "listaInstrumentos : administra
+}
+sistema <-- "1..*" Instrumento: almacena
+sistema <|--.. sistemaIMPL: implements
+}
+
+@enduml
