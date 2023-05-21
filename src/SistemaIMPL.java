@@ -357,7 +357,7 @@ public class SistemaIMPL implements Sistema {
     }
 
     public void actualizarDato() throws IOException {
-        StdOut.println("d");
+       
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("csv_prueba.csv"));
 
