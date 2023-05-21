@@ -1,7 +1,26 @@
 @startuml
+
 skin rose
 
+class Inventariointrumentos{
+calificacionInstrumento
+codigoUnico
+nombreInstrumento
+stockProducto
+materialConstruccion
+precio
+}
+class boleta{
+instrumentoVendido
+cantidad
+precio
+}
+class tienda{
+nombreTienda
+}
 
-
+tienda"1" <-- "*"Inventariointrumentos: "se realiza una venta"
+Inventariointrumentos"+" <-- "1..*"boleta : se realiza una venta
+boleta <-- tienda : se realiza una compra
 
 @enduml

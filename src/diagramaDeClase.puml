@@ -72,10 +72,12 @@ class listaInstrumentosPercusion {
 Instrumento <|-- instrumentoDeViento:hereda
 Instrumento <|-- intrumentoPercusion :hereda
 Instrumento <|-- instrumentoCuerda: hereda
-InstrumentoCuerda "*" --o "1" listaInstrumentosCuerda: almacena
-InstrumentoViento "*" --o "1" listaInstrumentosViento: almacena
-InstrumentoPercusion "*" --o "1" listaInstrumentosPercusion: almacena
-sistemaIMPL "1" --> "1 "listaInstrumentos : administra
+instrumentoCuerda "*" --o "1" listaInstrumentosCuerda: almacena
+instrumentoDeViento "*" --o "1" listaInstrumentosViento: almacena
+intrumentoPercusion "*" --o "1" listaInstrumentosPercusion: almacena
+sistemaIMPL "1" --> "1 " listaInstrumentosPercusion : administra
+sistemaIMPL "1" --> "1 " listaInstrumentosViento : administra
+sistemaIMPL "1" --> "1 " listaInstrumentosCuerda : administra
 }
 sistema <-- "1..*" Instrumento: almacena
 sistema <|--.. sistemaIMPL: implements

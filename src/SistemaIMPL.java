@@ -42,7 +42,7 @@ public class SistemaIMPL implements Sistema {
                 case "1" -> agregarInstrumento();
                 case "2" -> venderInstrumento();
                 case "3" -> consultarInventario();
-                case "4" -> actualizarDatos();
+                case "4" -> actualizarDato();
                 default -> StdOut.println("Opcion no valida, intente nuevamente");
             }
         }
@@ -356,7 +356,7 @@ public class SistemaIMPL implements Sistema {
 
     }
 
-    public void actualizarDatos() throws IOException {
+    public void actualizarDato() throws IOException {
         StdOut.println("d");
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("csv_prueba.csv"));
@@ -441,7 +441,6 @@ public class SistemaIMPL implements Sistema {
                 writer.newLine();
             }
             writer.close();
-
             StdOut.println("Datos actualizados correctamente :)");
         } catch (IOException e) {
             e.printStackTrace();
